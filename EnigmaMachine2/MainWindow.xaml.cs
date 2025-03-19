@@ -203,29 +203,6 @@ namespace EnigmaMachine2
                     }
                 }
             }
-            else
-            {
-                if (_keyOffset[2] > 0 || _keyOffset[1] > 0)
-                {
-                    _keyOffset[2]--;
-                    _ring3 = MoveValues(forward, _ring3);
-                    if (_keyOffset[2] < 0)
-                    {
-                        _keyOffset[2] = 25;
-                        _keyOffset[1]--;
-                        _ring2 = MoveValues(forward, _ring2);
-                        if (_keyOffset[1] < 0)
-                        {
-                            _keyOffset[1] = 25;
-                            _keyOffset[0]--;
-                            _ring1 = MoveValues(forward, _ring1);
-                            if (_keyOffset[0] < 0)
-                                _keyOffset[0] = 25;
-                        }
-                    }
-                }
-            }
-
             DisplayOffset(); // Update offset display
         }
 
