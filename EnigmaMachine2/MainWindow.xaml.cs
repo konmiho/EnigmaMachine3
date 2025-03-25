@@ -40,6 +40,10 @@ namespace EnigmaMachine2
         private bool _plugboardSet = false; // Flag to indicate if plugboard is set
 
         // Constructor
+
+        private TextBox[] textBoxArray = new TextBox[26];
+        private Rectangle[] lamps = new Rectangle[26];
+
         public MainWindow()
         {
             InitializeComponent();
@@ -49,7 +53,21 @@ namespace EnigmaMachine2
             _rotor = false; // Initially rotor is off
             btnRotor.Content = "Rotor On"; // Set button text
             btnRotor.IsEnabled = false; // Disable rotor button until plugboard is set
+
+            textBoxArray = new TextBox[]
+            {
+                TB1, TB2, TB3, TB4, TB5, TB6, TB7, TB8, TB9, TB10, TB11, TB12, TB13, TB14, 
+                TB15, TB16, TB17, TB18, TB19, TB20, TB21, TB22, TB23, TB24, TB25, TB26
+            };
+
+            lamps = new Rectangle[]
+            {
+                Lamp1, Lamp2, Lamp3, Lamp4, Lamp5, Lamp6, Lamp7, Lamp8, Lamp9, Lamp10, 
+                Lamp11, Lamp12, Lamp13, Lamp14, Lamp15, Lamp16, Lamp17, Lamp18, 
+                Lamp19, Lamp20, Lamp21, Lamp22, Lamp23, Lamp24, Lamp25, Lamp26
+            };
         }
+
 
         // Display rotor wiring in UI labels
         private void DisplayRing(Label displayLabel, string ring)
@@ -79,42 +97,58 @@ namespace EnigmaMachine2
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             // Check for uppercase letters and message length
-            if (e.Key.ToString().Length == 1 && lblInput.Content.ToString().Length < 128)
+            if (_plugboardSet)
             {
-                if ((int)e.Key.ToString()[0] >= 65 && (int)e.Key.ToString()[0] <= 90)
+                if (e.Key.ToString().Length == 1 && lblInput.Text.ToString().Length < 128)
                 {
-                    lblInput.Content += e.Key.ToString(); // Append input character
-                    lblEncrpyt.Content += Encrypt(e.Key.ToString()[0]) + ""; // Encrypt and append
-                    lblEncrpytMirror.Content += Mirror(e.Key.ToString()[0]) + ""; // Mirror and append
-
-                    // Rotate rotors if enabled
-                    if (_rotor)
+                    if ((int)e.Key.ToString()[0] >= 65 && (int)e.Key.ToString()[0] <= 90)
                     {
-                        Rotate(true);
-                        DisplayRing(lblRing1, _ring1); // Update rotor display
-                        DisplayRing(lblRing2, _ring2);
-                        DisplayRing(lblRing3, _ring3);
+                        for (int x = 0; x < 26; x++)
+                        {
+                            lamps[x].Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFF2F2"));
+                            if (e.Key.ToString() == textBoxArray[x].Text)
+                            {
+                                lamps[x].Fill = new SolidColorBrush(Colors.BlueViolet);
+                            }
+                            if (Encrypt(e.Key.ToString()[0]) == textBoxArray[x].Text[0])
+                            {
+                                lamps[x].Fill = new SolidColorBrush(Colors.MediumVioletRed);
+                            }
+                        }
+
+                        lblInput.Text += e.Key.ToString(); // Append input character
+                        lblEncrpyt.Text += Encrypt(e.Key.ToString()[0]) + ""; // Encrypt and append
+                        lblEncrpytMirror.Text += Mirror(e.Key.ToString()[0]) + ""; // Mirror and append
+
+                        // Rotate rotors if enabled
+                        if (_rotor)
+                        {
+                            Rotate(true);
+                            DisplayRing(lblRing1, _ring1); // Update rotor display
+                            DisplayRing(lblRing2, _ring2);
+                            DisplayRing(lblRing3, _ring3);
+                        }
                     }
                 }
-            }
-            // Handle space key
-            else if (e.Key == Key.Space)
-            {
-                lblInput.Content += " ";
-                lblEncrpyt.Content += " ";
-                lblEncrpytMirror.Content += " ";
-            }
-            // Handle backspace key
-            else if (e.Key == Key.Back)
-            {
-                Rotate(false); // Rotate rotors backward
-                DisplayRing(lblRing1, _ring1);
-                DisplayRing(lblRing2, _ring2);
-                DisplayRing(lblRing3, _ring3);
+                // Handle space key
+                else if (e.Key == Key.Space)
+                {
+                    lblInput.Text += " ";
+                    lblEncrpyt.Text += " ";
+                    lblEncrpytMirror.Text += " ";
+                }
+                // Handle backspace key
+                else if (e.Key == Key.Back)
+                {
+                    Rotate(false); // Rotate rotors backward
+                    DisplayRing(lblRing1, _ring1);
+                    DisplayRing(lblRing2, _ring2);
+                    DisplayRing(lblRing3, _ring3);
 
-                lblInput.Content = RemoveLastLetter(lblInput.Content.ToString()); // Remove last character
-                lblEncrpyt.Content = RemoveLastLetter(lblEncrpyt.Content.ToString());
-                lblEncrpytMirror.Content = RemoveLastLetter(lblEncrpytMirror.Content.ToString());
+                    lblInput.Text = RemoveLastLetter(lblInput.Text.ToString()); // Remove last character
+                    lblEncrpyt.Text = RemoveLastLetter(lblEncrpyt.Text.ToString());
+                    lblEncrpytMirror.Text = RemoveLastLetter(lblEncrpytMirror.Text.ToString());
+                }
             }
         }
 
@@ -148,6 +182,8 @@ namespace EnigmaMachine2
             else if (_plugboard.ContainsValue(newChar))
                 newChar = _plugboard.FirstOrDefault(x => x.Value == newChar).Key;
 
+
+            
             return newChar;
         }
 
@@ -172,9 +208,9 @@ namespace EnigmaMachine2
             _ring3 = "UQNTLSZFMREHDPXKIBVYGJCWOA";
             _keyOffset = new int[] { 0, 0, 0 };
 
-            lblInput.Content = "";
-            lblEncrpyt.Content = "";
-            lblEncrpytMirror.Content = "";
+            lblInput.Text = "";
+            lblEncrpyt.Text = "";
+            lblEncrpytMirror.Text = "";
 
             DisplayRing(lblControlRing, _control);
             DisplayRing(lblRing1, _ring1);
@@ -330,21 +366,25 @@ namespace EnigmaMachine2
 
             SetupPlugboard(txtPlugboard.Text);
             _plugboardSet = true;
+            btnSetPlugboard.IsEnabled = false;
             btnRotor.IsEnabled = true; // Enable the rotor button.
 
             // Explicitly check the flag and perform an action
             if (_plugboardSet)
-            {
                 txtPlugboard.IsEnabled = false;
-            }
         }
 
         // Handle plugboard text change
         private void txtPlugboard_TextChanged(object sender, TextChangedEventArgs e)
         {
-            lblInput.Content = "";
-            lblEncrpyt.Content = "";
-            lblEncrpytMirror.Content = "";
+            lblInput.Text = "";
+            lblEncrpyt.Text = "";
+            lblEncrpytMirror.Text = "";
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

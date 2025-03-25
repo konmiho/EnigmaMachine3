@@ -5,33 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnigmaMachine2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" SizeToContent="WidthAndHeight" KeyDown="Window_KeyDown">
-    <Grid>
-        <Rectangle HorizontalAlignment="Left" Width="10" Height="10" Margin="790,425,0,0" Stroke="Black" VerticalAlignment="Top" Opacity="0"/>
-        <Label Content="Control" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ring 3 (H)" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ring 2 (M)" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ring 1 (S)" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblControlRing" Content="Label" HorizontalAlignment="Left" Margin="80,30,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblRing1" Content="Label" HorizontalAlignment="Left" Margin="80,61,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblRing2" Content="Label" HorizontalAlignment="Left" Margin="80,92,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblRing3" Content="Label" HorizontalAlignment="Left" Margin="80,123,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblInput" Content="Input" HorizontalAlignment="Left" Margin="10,199,0,0" VerticalAlignment="Top" FontFamily="Courier New"/>
-        <Label x:Name="lblEncrpyt" Content="Encrypt" HorizontalAlignment="Left" Margin="10,259,0,0" VerticalAlignment="Top" FontFamily="Courier New"/>
-        <Label x:Name="lblEncrpytMirror" Content="Mirror" HorizontalAlignment="Left" Margin="10,319,0,0" VerticalAlignment="Top" FontFamily="Courier New"/>
+        Title="MainWindow" Height="500" Width="800" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown" Background="#FF212121">
+    <Grid Height="500" Width="800" Background="#FF1C1919" >
+        <Rectangle Height="35" Stroke="Black" Width="780" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="0,439,0,0"/>
+
+        <Rectangle Height="35" Stroke="Black" Width="780" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="0,399,0,0"/>
+
+        <Rectangle Height="35" Stroke="Black" Width="780" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="0,359,0,0"/>
+
+        <Rectangle Height="44" Stroke="Black" Width="800" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A"/>
+        <Rectangle Height="141" Canvas.Left="234" Stroke="Black" Canvas.Top="74" Width="686" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF30353D" Margin="0,65,0,0"/>
+
+        <Canvas Visibility="Visible" Margin="0,34,791,90">
+            <Label x:Name="lblControlRing" Content="Label" HorizontalAlignment="Left" Margin="80,30,0,0" VerticalAlignment="Top"/>
+            <Label Content="Control" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
+            <Rectangle x:Name="Lamp1" Canvas.Left="247" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp2" Canvas.Left="279" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp3" Canvas.Left="311" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp4" Canvas.Left="343" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp5" Canvas.Left="260" Canvas.Top="210" Width="28" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp6" Canvas.Left="292" Canvas.Top="210" Width="28" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp7" Canvas.Left="324" Canvas.Top="210" Width="28" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp8" Canvas.Left="356" Canvas.Top="210" Width="28" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp9" Canvas.Left="454" Canvas.Top="210" Width="26" Height="20" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp10" Canvas.Left="486" Canvas.Top="210" Width="26" Height="20" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2" />
+            <Rectangle x:Name="Lamp11" Canvas.Left="518" Canvas.Top="210" Width="26" Height="20" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2" />
+            <Rectangle x:Name="Lamp12" Canvas.Left="445" Canvas.Top="233" Width="27" Height="20" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2" />
+            <Rectangle x:Name="Lamp13" Canvas.Left="285" Canvas.Top="233" Width="27" Height="20" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2" />
+            <Rectangle x:Name="Lamp14" Canvas.Left="317" Canvas.Top="233" Width="27" Height="20" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2" />
+            <Rectangle x:Name="Lamp15" Canvas.Left="349" Canvas.Top="233" Width="27" Height="20" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp16" Canvas.Left="381" Canvas.Top="233" Width="27" Height="20" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp17" Canvas.Left="376" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp18" Canvas.Left="408" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp19" Canvas.Left="440" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp20" Canvas.Left="472" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp21" Canvas.Left="390" Canvas.Top="210" Width="26" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp22" Canvas.Left="422" Canvas.Top="210" Width="26" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
+            <Rectangle x:Name="Lamp23" Canvas.Left="504" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2" />
+            <Rectangle x:Name="Lamp24" Canvas.Left="536" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2" />
+            <Rectangle x:Name="Lamp25" Canvas.Left="478" Canvas.Top="233" Width="27" Height="20" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2" />
+            <Rectangle x:Name="Lamp26" Canvas.Left="414" Canvas.Top="233" Width="27" Height="20" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2" />
+            <TextBox x:Name="TB1" IsReadOnly="True" TextAlignment="Center" Canvas.Left="247" TextWrapping="Wrap" Text="Q" Canvas.Top="186" Width="27" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Background="{x:Null}" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB2" IsReadOnly="True" TextAlignment="Center" Canvas.Left="279" TextWrapping="Wrap" Text="W" Canvas.Top="186" Width="27" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB3" IsReadOnly="True" TextAlignment="Center" Canvas.Left="311" TextWrapping="Wrap" Text="E" Canvas.Top="186" Width="27" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB4" IsReadOnly="True" TextAlignment="Center" Canvas.Left="343" TextWrapping="Wrap" Text="R" Canvas.Top="186" Width="27" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB5" IsReadOnly="True" TextAlignment="Center" Canvas.Left="260" TextWrapping="Wrap" Text="A" Canvas.Top="210" Width="28" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB6" IsReadOnly="True" TextAlignment="Center" Canvas.Left="292" TextWrapping="Wrap" Text="S" Canvas.Top="210" Width="28" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB7" IsReadOnly="True" TextAlignment="Center" Canvas.Left="324" TextWrapping="Wrap" Text="D" Canvas.Top="210" Width="28" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB8" IsReadOnly="True" TextAlignment="Center" Canvas.Left="356" TextWrapping="Wrap" Text="F" Canvas.Top="210" Width="28" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB9" IsReadOnly="True" TextAlignment="Center" Canvas.Left="454" TextWrapping="Wrap" Text="J" Canvas.Top="210" Width="26" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB10" IsReadOnly="True" TextAlignment="Center" Canvas.Left="486" TextWrapping="Wrap" Text="K" Canvas.Top="210" Width="26" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB11" IsReadOnly="True" TextAlignment="Center" Canvas.Left="518" TextWrapping="Wrap" Text="L" Canvas.Top="210" Width="26" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB12" IsReadOnly="True" TextAlignment="Center" Canvas.Left="445" TextWrapping="Wrap" Text="N" Canvas.Top="233" Width="27" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB13" IsReadOnly="True" TextAlignment="Center" Canvas.Left="285" TextWrapping="Wrap" Text="Z" Canvas.Top="233" Width="27" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB14" IsReadOnly="True" TextAlignment="Center" Canvas.Left="317" TextWrapping="Wrap" Text="X" Canvas.Top="233" Width="27" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB15" IsReadOnly="True" TextAlignment="Center" Canvas.Left="349" TextWrapping="Wrap" Text="C" Canvas.Top="233" Width="27" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB16" IsReadOnly="True" TextAlignment="Center" Canvas.Left="381" TextWrapping="Wrap" Text="V" Canvas.Top="233" Width="27" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB17" IsReadOnly="True" TextAlignment="Center" Canvas.Left="376" TextWrapping="Wrap" Text="T" Canvas.Top="186" Width="27" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB18" IsReadOnly="True" TextAlignment="Center" Canvas.Left="408" TextWrapping="Wrap" Text="Y" Canvas.Top="186" Width="27" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB19" IsReadOnly="True" TextAlignment="Center" Canvas.Left="440" TextWrapping="Wrap" Text="U" Canvas.Top="186" Width="27" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB20" IsReadOnly="True" TextAlignment="Center" Canvas.Left="472" TextWrapping="Wrap" Text="I" Canvas.Top="186" Width="27" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB21" IsReadOnly="True" TextAlignment="Center" Canvas.Left="390" TextWrapping="Wrap" Text="G" Canvas.Top="210" Width="26" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB22" IsReadOnly="True" TextAlignment="Center" Canvas.Left="422" TextWrapping="Wrap" Text="H" Canvas.Top="210" Width="26" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB23" IsReadOnly="True" TextAlignment="Center" Canvas.Left="504" TextWrapping="Wrap" Text="O" Canvas.Top="186" Width="27" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB24" IsReadOnly="True" TextAlignment="Center" Canvas.Left="536" TextWrapping="Wrap" Text="P" Canvas.Top="186" Width="27" Height="19" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB25" IsReadOnly="True" TextAlignment="Center" Canvas.Left="478" TextWrapping="Wrap" Text="M" Canvas.Top="233" Width="27" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+            <TextBox x:Name="TB26" IsReadOnly="True" TextAlignment="Center" Canvas.Left="414" TextWrapping="Wrap" Text="B" Canvas.Top="233" Width="27" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
+
+        </Canvas>
+        <Label Content="Ring 3 (H)" HorizontalAlignment="Left" Margin="16,443,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Ring 2 (M)" HorizontalAlignment="Left" Margin="15,403,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Ring 1 (S)" HorizontalAlignment="Left" Margin="14,362,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="lblRing1" Content="Label" HorizontalAlignment="Left" Margin="85,443,0,0" VerticalAlignment="Top" Foreground="White" />
+        <Label x:Name="lblRing2" Content="Label" HorizontalAlignment="Left" Margin="85,403,0,0" VerticalAlignment="Top" Foreground="White" />
+        <Label x:Name="lblRing3" Content="Label" HorizontalAlignment="Left" Margin="84,362,0,0" VerticalAlignment="Top" Foreground="White" />
+        <TextBox x:Name="lblInput"  Text="Input" HorizontalAlignment="Left" Margin="71,77,0,0" VerticalAlignment="Top" FontFamily="Courier New" Foreground="White" Height="109" Width="315" Background="{x:Null}" TextWrapping="Wrap" IsReadOnly="True" MaxLength="2147483647" />
+        <TextBox x:Name="lblEncrpyt" Text="Encrypt" HorizontalAlignment="Left" Margin="409,77,0,0" VerticalAlignment="Top" FontFamily="Courier New" Foreground="White" Height="109" Width="315" BorderBrush="Black" Background="{x:Null}" TextWrapping="Wrap" IsReadOnly="True" MaxLength="2147483647"/>
+        <TextBox x:Name="lblEncrpytMirror" Text="Mirror" HorizontalAlignment="Left" Margin="281,305,0,0" VerticalAlignment="Top" FontFamily="Courier New" Visibility="Hidden"/>
         <Button x:Name="btnRotor"  Content="Rotor On" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnRotor_Click"/>
         <TextBox x:Name="txtBRing1Init" HorizontalAlignment="Left" Margin="142,11,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="41" Height="18" GotFocus="txtBRing1Init_GotFocus" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="txtBRing2Init" HorizontalAlignment="Left" Margin="214,11,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="41" GotFocus="txtBRing2Init_GotFocus" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="txtBRing3Init" HorizontalAlignment="Left" Margin="281,11,0,0" TextWrapping="Wrap" Text="0 -25" VerticalAlignment="Top" Width="41" Height="18" GotFocus="txtBRing3Init_GotFocus" HorizontalContentAlignment="Center"/>
-        <Label Content="H" HorizontalAlignment="Left" Margin="118,7,0,0" VerticalAlignment="Top"/>
-        <Label Content="M" HorizontalAlignment="Left" Margin="188,7,0,0" VerticalAlignment="Top"/>
-        <Label Content="S" HorizontalAlignment="Left" Margin="260,7,0,0" VerticalAlignment="Top"/>
+        <Label Content="H" HorizontalAlignment="Left" Margin="118,7,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="M" HorizontalAlignment="Left" Margin="188,7,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="S" HorizontalAlignment="Left" Margin="260,7,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Encrypted Message with Mirroring:" HorizontalAlignment="Left" Margin="188,313,0,0" VerticalAlignment="Top"/>
+        <Label Content="Plugboard (AB CD EF):" HorizontalAlignment="Left" Margin="361,7,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="txtPlugboard" HorizontalAlignment="Left" Margin="501,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" TextChanged="txtPlugboard_TextChanged"/>
+        <Button x:Name="btnSetPlugboard" Content="Enable" HorizontalAlignment="Left" Margin="711,12,0,0" VerticalAlignment="Top" Click="btnSetPlugboard_Click" Width="65"/>
 
-        <Label Content="Input Message:" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top"/>
-        <Label Content="Encrypted Message:" HorizontalAlignment="Left" Margin="10,228,0,0" VerticalAlignment="Top"/>
-        <Label Content="Encrypted Message with Mirroring:" HorizontalAlignment="Left" Margin="10,288,0,0" VerticalAlignment="Top"/>
-        <Label Content="Plugboard (AB CD EF):" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtPlugboard" HorizontalAlignment="Left" Margin="150,350,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" TextChanged="txtPlugboard_TextChanged"/>
-        <Button x:Name="btnSetPlugboard" Content="Set Plugboard" HorizontalAlignment="Left" Margin="360,350,0,0" VerticalAlignment="Top" Click="btnSetPlugboard_Click"/>
     </Grid>
 </Window>
