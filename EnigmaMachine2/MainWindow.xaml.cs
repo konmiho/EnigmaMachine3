@@ -97,7 +97,7 @@ namespace EnigmaMachine2
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             // Check for uppercase letters and message length
-            if (_plugboardSet)
+            if (_plugboardSet && _rotor)
             {
                 if (e.Key.ToString().Length == 1 && lblInput.Text.ToString().Length < 128)
                 {
@@ -163,6 +163,7 @@ namespace EnigmaMachine2
             else if (_plugboard.ContainsValue(newChar))
                 newChar = _plugboard.FirstOrDefault(x => x.Value == newChar).Key;
 
+
             // Rotor pass forward
             newChar = _ring1[IndexSearch(_control, newChar)];
             newChar = _ring2[IndexSearch(_control, newChar)];
@@ -206,6 +207,7 @@ namespace EnigmaMachine2
             _ring1 = "DMTWSILRUYQNKFEJCAZBPGXOHV";
             _ring2 = "HQZGPJTMOBLNCIFDYAWVEUSRKX";
             _ring3 = "UQNTLSZFMREHDPXKIBVYGJCWOA";
+
             _keyOffset = new int[] { 0, 0, 0 };
 
             lblInput.Text = "";
@@ -216,6 +218,8 @@ namespace EnigmaMachine2
             DisplayRing(lblRing1, _ring1);
             DisplayRing(lblRing2, _ring2);
             DisplayRing(lblRing3, _ring3);
+            DisplayRing(lblReflector, _reflector); // Display Reflector Ring
+
         }
 
         // Rotate rotors
@@ -236,6 +240,28 @@ namespace EnigmaMachine2
                         _keyOffset[1] = 0;
                         _keyOffset[0]++;
                         _ring1 = MoveValues(forward, _ring1);
+                    }
+                    else
+                    {
+                        if (_keyOffset[2] > 0 || _keyOffset[1] > 0)
+                        {
+                            _keyOffset[2]--;
+                            _ring3 = MoveValues(forward, _ring3);
+                            if (_keyOffset[2] < 0)
+                            {
+                                _keyOffset[2] = 25;
+                                _keyOffset[1]--;
+                                _ring2 = MoveValues(forward, _ring2);
+                                if (_keyOffset[1] < 0)
+                                {
+                                    _keyOffset[1] = 25;
+                                    _keyOffset[0]--;
+                                    _ring1 = MoveValues(forward, _ring1);
+                                    if (_keyOffset[0] < 0)
+                                        _keyOffset[0] = 25;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -271,31 +297,63 @@ namespace EnigmaMachine2
         {
             SetDefaults();
 
-            if (int.TryParse(txtBRing1Init.Text, out _initOffset[0]) &&
-                int.TryParse(txtBRing2Init.Text, out _initOffset[1]) &&
-                int.TryParse(txtBRing3Init.Text, out _initOffset[2]))
+            if (IsValidNumericInput(txtBRing1Init.Text) &&
+            IsValidNumericInput(txtBRing2Init.Text) &&
+             IsValidNumericInput(txtBRing3Init.Text))
             {
-                if (_initOffset[0] >= 0 && _initOffset[0] <= 25 &&
-                    _initOffset[1] >= 0 && _initOffset[1] <= 25 &&
-                    _initOffset[2] >= 0 && _initOffset[2] <= 25)
+                // Try parsing the input values as integers
+                if (int.TryParse(txtBRing1Init.Text, out _initOffset[0]) &&
+                    int.TryParse(txtBRing2Init.Text, out _initOffset[1]) &&
+                    int.TryParse(txtBRing3Init.Text, out _initOffset[2]))
                 {
-                    txtBRing1Init.IsEnabled = false;
-                    txtBRing2Init.IsEnabled = false;
-                    txtBRing3Init.IsEnabled = false;
+                    // Check if the values are within the valid range (0 to 25)
+                    if (_initOffset[0] >= 0 && _initOffset[0] <= 25 &&
+                        _initOffset[1] >= 0 && _initOffset[1] <= 25 &&
+                        _initOffset[2] >= 0 && _initOffset[2] <= 25)
+                    {
+                        txtBRing1Init.IsEnabled = false;
+                        txtBRing2Init.IsEnabled = false;
+                        txtBRing3Init.IsEnabled = false;
 
-                    _rotor = true;
-                    btnRotor.Content = "Settings Lock";
+                        _rotor = true;
+                        MessageBox.Show("Rotors have been set");
+                        btnRotor.IsEnabled = false;
+                        btnRotor.Content = "Settings Lock";
 
-                    _ring1 = InitializeRotors(_initOffset[0], _ring1);
-                    _ring2 = InitializeRotors(_initOffset[1], _ring2);
-                    _ring3 = InitializeRotors(_initOffset[2], _ring3);
+                        _ring1 = InitializeRotors(_initOffset[0], _ring1);
+                        _ring2 = InitializeRotors(_initOffset[1], _ring2);
+                        _ring3 = InitializeRotors(_initOffset[2], _ring3);
 
-                    DisplayRing(lblRing1, _ring1);
-                    DisplayRing(lblRing2, _ring2);
-                    DisplayRing(lblRing3, _ring3);
-                    DisplayOffset();
+                        // Display the updated ring values
+                        DisplayRing(lblRing1, _ring1);
+                        DisplayRing(lblRing2, _ring2);
+                        DisplayRing(lblRing3, _ring3);
+                        DisplayOffset();
+                    }
+                    else
+                    {
+                        // Show a message box if the values are not within the valid range
+                        MessageBox.Show("Please enter numbers between 0 and 25 for the rotor offsets.");
+                    }
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Please only input numbers between 0 and 25 for the rotor offsets.");
+            }
+        }
+
+        private bool IsValidNumericInput(string input)
+        {
+            foreach (char c in input)
+            {
+                if (!char.IsDigit(c)) 
+                {
+                    return false; 
                 }
             }
+            return true; 
         }
 
         // Initialize rotors with initial offset
@@ -356,25 +414,32 @@ namespace EnigmaMachine2
         }
 
         // Handle plugboard button click
-        private void btnSetPlugboard_Click(object sender, RoutedEventArgs e) // YOU DO THE PLUGBOARD HERE
+        private void btnSetPlugboard_Click(object sender, RoutedEventArgs e)
         {
-            if (_plugboardSet)
+            string plugboardInput = txtPlugboard.Text;
+
+
+            if (String.IsNullOrWhiteSpace(plugboardInput) || ValidPB(plugboardInput) == true)
             {
-                MessageBox.Show("Plugboard is already set.");
+                SetupPlugboard(plugboardInput);
+                _plugboardSet = true;
+                MessageBox.Show("Plugboard has been set!");
+                btnSetPlugboard.IsEnabled = false;
+                btnRotor.IsEnabled = true;
+
+                if (_plugboardSet)
+                    txtPlugboard.IsEnabled = false;
+
+            }
+            else
+            {
+                MessageBox.Show("Please enter valid plugboard pairs or leave the field empty.");
                 return;
             }
-
-            SetupPlugboard(txtPlugboard.Text);
-            _plugboardSet = true;
-            btnSetPlugboard.IsEnabled = false;
-            btnRotor.IsEnabled = true; // Enable the rotor button.
-
-            // Explicitly check the flag and perform an action
-            if (_plugboardSet)
-                txtPlugboard.IsEnabled = false;
+          
         }
 
-        // Handle plugboard text change
+
         private void txtPlugboard_TextChanged(object sender, TextChangedEventArgs e)
         {
             lblInput.Text = "";
@@ -385,6 +450,52 @@ namespace EnigmaMachine2
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void lblInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private bool ValidPB(string input)
+        {
+            string[] pairs = input.ToUpper().Split(' ');
+
+            if (pairs.Length == 0)
+            {
+                return true;
+            }
+            
+            if (pairs.Length > 10)
+            {
+                return false;
+            }
+
+            foreach (string pair in pairs)
+            {
+                if (pair.Length != 2)
+                {
+                    return false;
+                }
+
+                if (!pair.All(char.IsLetter))
+                {
+                    return false;
+                }
+            }
+
+            List<char> usedLetters = new List<char>(); 
+            foreach (string pair in pairs)
+            {
+                if (usedLetters.Contains(pair[0]) || usedLetters.Contains(pair[1]))
+                {
+                    MessageBox.Show("Each letter can only be used once in the plugboard setup.");
+                    return false;
+                }
+                usedLetters.Add(pair[0]);
+                usedLetters.Add(pair[1]);
+            }
+            return true;
         }
     }
 }
