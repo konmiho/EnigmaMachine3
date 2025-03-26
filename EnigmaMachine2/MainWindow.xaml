@@ -79,8 +79,8 @@
                 <TextBox x:Name="TB26" IsReadOnly="True" TextAlignment="Center" Canvas.Left="414" TextWrapping="Wrap" Text="B" Canvas.Top="233" Width="27" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
             </Canvas>
             <Rectangle HorizontalAlignment="Left" Height="500" Stroke="Black" VerticalAlignment="Center" Width="950" Margin="-75,0,0,0" Visibility="Collapsed"/>
-            <TextBox x:Name="lblInput"  Text="Input" HorizontalAlignment="Center" Margin="0,126,0,0" VerticalAlignment="Top" Foreground="White" Height="102" Width="220" Background="{x:Null}" TextWrapping="Wrap" IsReadOnly="True" MaxLength="2147483647" FontSize="10" TextChanged="lblInput_TextChanged" />
-            <TextBox x:Name="lblEncrpytMirror" TextWrapping="Wrap" IsReadOnly="True" Text="Mirror" HorizontalAlignment="Left" Margin="37,126,0,0" VerticalAlignment="Top" Visibility="Visible" Background="{x:Null}" Foreground="White" Height="102" Width="220" FontSize="10"/>
+            <TextBox x:Name="lblInput"  VerticalScrollBarVisibility="Auto" Text="Input" HorizontalAlignment="Center" Margin="0,126,0,0" VerticalAlignment="Top" Foreground="White" Height="102" Width="220" Background="{x:Null}" TextWrapping="Wrap" IsReadOnly="True" MaxLength="2147483647" FontSize="10" TextChanged="lblInput_TextChanged" />
+            <TextBox x:Name="lblEncrpytMirror" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" IsReadOnly="True" Text="Mirror" HorizontalAlignment="Left" Margin="37,126,0,0" VerticalAlignment="Top" Visibility="Visible" Background="{x:Null}" Foreground="White" Height="102" Width="220" FontSize="10"/>
             <Button x:Name="btnRotor"  Content="Rotor On" HorizontalAlignment="Left" Margin="16,18,0,0" VerticalAlignment="Top" Click="btnRotor_Click"/>
             <TextBox x:Name="txtBRing1Init" HorizontalAlignment="Left" Margin="142,19,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="41" Height="18" HorizontalContentAlignment="Center"/>
             <TextBox x:Name="txtBRing2Init" HorizontalAlignment="Left" Margin="214,19,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="41" HorizontalContentAlignment="Center"/>
@@ -94,10 +94,10 @@
             <Label Content="MIRRORED" HorizontalAlignment="Left" Margin="111,103,0,0" VerticalAlignment="Top" FontSize="10" Foreground="#FFF9F5F5"/>
             <Label Content="DEFAULT&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top" FontSize="10" Foreground="#FFF9F5F5"/>
             <Label Content="ENCRYPTED" HorizontalAlignment="Left" Margin="618,103,0,0" VerticalAlignment="Top" Height="27" Width="68" FontSize="10" Foreground="#FFF9F5F5"/>
-            <TextBox x:Name="lblEncrpyt" Text="Encrypt" HorizontalAlignment="Left" Margin="542,126,0,0" VerticalAlignment="Top" Foreground="White" Height="102" Width="220" BorderBrush="#FFF6DFDF" Background="{x:Null}" TextWrapping="Wrap" IsReadOnly="True" MaxLength="2147483647" FontSize="10"/>
-            <Rectangle HorizontalAlignment="Left" Height="18" Margin="1,303,0,0" Stroke="Black" VerticalAlignment="Top" Width="54" Fill="#FF7C9CFF"/>
+            <TextBox x:Name="lblEncrpyt" VerticalScrollBarVisibility="Auto" Text="Encrypt" HorizontalAlignment="Left" Margin="542,126,0,0" VerticalAlignment="Top" Foreground="White" Height="102" Width="220" BorderBrush="#FFF6DFDF" Background="{x:Null}" TextWrapping="Wrap" IsReadOnly="True" MaxLength="2147483647" FontSize="10"/>
+            <Rectangle HorizontalAlignment="Left" Height="18" Margin="3,333,0,0" Stroke="Black" VerticalAlignment="Top" Width="54" Fill="#FF7C9CFF"/>
             <TextBlock HorizontalAlignment="Left" Margin="63,304,0,0" TextWrapping="Wrap" Text="Default Text" VerticalAlignment="Top" Foreground="White"/>
-            <Rectangle HorizontalAlignment="Left" Height="18" Margin="1,332,0,0" Stroke="Black" VerticalAlignment="Top" Width="54" Fill="MediumVioletRed"/>
+            <Rectangle HorizontalAlignment="Left" Height="18" Margin="3,304,0,0" Stroke="Black" VerticalAlignment="Top" Width="54" Fill="MediumVioletRed"/>
             <TextBlock HorizontalAlignment="Left" Margin="63,333,0,0" TextWrapping="Wrap" Text="Encrypted Text" VerticalAlignment="Top" Foreground="White"/>
 
         </Grid>
