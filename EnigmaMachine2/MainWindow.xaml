@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="950" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown" Background="#FF212121" ResizeMode="NoResize" >
     <Grid Height="500" Width="950">
+        <Rectangle Height="26" Stroke="Black" Width="68" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="43,355,0,0"/>
+        <Rectangle Height="26" Stroke="Black" Width="68" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="43,355,0,0"/>
+        <Rectangle Height="26" Stroke="Black" Width="68" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="43,355,0,0"/>
 
         <Rectangle Height="26" Stroke="Black" Width="890" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="0,323,0,0"/>
 
@@ -17,10 +20,10 @@
             <Image Margin="-265,49,-523,-1198" Source="/Chroma-Blue-Dark.jpg" Stretch="Fill" Visibility="Hidden"/>
 
             <Rectangle Height="44" Stroke="Black" Width="800" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="0,8,0,0"/>
-            <Rectangle Height="140" Canvas.Left="234" Canvas.Top="74" Width="796" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF17181A" Margin="0,66,0,0"/>
+            <Rectangle Height="140" Canvas.Left="234" Canvas.Top="74" Width="796" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF17181A" Margin="0,103,0,0"/>
 
             <Rectangle HorizontalAlignment="Left" Height="500" Stroke="Black" VerticalAlignment="Center" Width="950" Margin="-75,0,0,0" Visibility="Collapsed"/>
-            <Canvas Visibility="Visible" Margin="-6,43,797,81">
+            <Canvas Visibility="Visible" Margin="-6,114,797,10">
 
                 <Rectangle x:Name="Lamp1" Canvas.Left="247" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2" RadiusX="2" RadiusY="2"/>
                 <Rectangle x:Name="Lamp2" Canvas.Left="279" Canvas.Top="186" Width="27" Height="19" Fill="#FFFFF2F2"  RadiusX="2" RadiusY="2"/>
@@ -76,42 +79,50 @@
                 <TextBox x:Name="TB26" IsReadOnly="True" TextAlignment="Center" Canvas.Left="414" TextWrapping="Wrap" Text="B" Canvas.Top="233" Width="27" Height="20" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" BorderBrush="{x:Null}" />
             </Canvas>
             <Rectangle HorizontalAlignment="Left" Height="500" Stroke="Black" VerticalAlignment="Center" Width="950" Margin="-75,0,0,0" Visibility="Collapsed"/>
-
-
-            <TextBox x:Name="lblInput"  Text="Input" HorizontalAlignment="Center" Margin="0,89,0,0" VerticalAlignment="Top" Foreground="White" Height="102" Width="220" Background="{x:Null}" TextWrapping="Wrap" IsReadOnly="True" MaxLength="2147483647" FontSize="10" TextChanged="lblInput_TextChanged" />
-            <TextBox x:Name="lblEncrpytMirror" TextWrapping="Wrap" IsReadOnly="True" Text="Mirror" HorizontalAlignment="Left" Margin="37,89,0,0" VerticalAlignment="Top" Visibility="Visible" Background="{x:Null}" Foreground="White" Height="102" Width="220" FontSize="10"/>
+            <TextBox x:Name="lblInput"  Text="Input" HorizontalAlignment="Center" Margin="0,126,0,0" VerticalAlignment="Top" Foreground="White" Height="102" Width="220" Background="{x:Null}" TextWrapping="Wrap" IsReadOnly="True" MaxLength="2147483647" FontSize="10" TextChanged="lblInput_TextChanged" />
+            <TextBox x:Name="lblEncrpytMirror" TextWrapping="Wrap" IsReadOnly="True" Text="Mirror" HorizontalAlignment="Left" Margin="37,126,0,0" VerticalAlignment="Top" Visibility="Visible" Background="{x:Null}" Foreground="White" Height="102" Width="220" FontSize="10"/>
             <Button x:Name="btnRotor"  Content="Rotor On" HorizontalAlignment="Left" Margin="16,18,0,0" VerticalAlignment="Top" Click="btnRotor_Click"/>
-            <TextBox x:Name="txtBRing1Init" HorizontalAlignment="Left" Margin="142,19,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="41" Height="18" GotFocus="txtBRing1Init_GotFocus" HorizontalContentAlignment="Center"/>
-            <TextBox x:Name="txtBRing2Init" HorizontalAlignment="Left" Margin="214,19,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="41" GotFocus="txtBRing2Init_GotFocus" HorizontalContentAlignment="Center"/>
-            <TextBox x:Name="txtBRing3Init" HorizontalAlignment="Left" Margin="281,19,0,0" TextWrapping="Wrap" Text="0 -25" VerticalAlignment="Top" Width="41" Height="18" GotFocus="txtBRing3Init_GotFocus" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="txtBRing1Init" HorizontalAlignment="Left" Margin="142,19,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="41" Height="18" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="txtBRing2Init" HorizontalAlignment="Left" Margin="214,19,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="41" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="txtBRing3Init" HorizontalAlignment="Left" Margin="281,19,0,0" TextWrapping="Wrap" Text="0 -25" VerticalAlignment="Top" Width="41" Height="18" HorizontalContentAlignment="Center"/>
             <Label Content="H" HorizontalAlignment="Left" Margin="118,15,0,0" VerticalAlignment="Top" Foreground="White"/>
             <Label Content="M" HorizontalAlignment="Left" Margin="188,15,0,0" VerticalAlignment="Top" Foreground="White"/>
             <Label Content="S" HorizontalAlignment="Left" Margin="260,15,0,0" VerticalAlignment="Top" Foreground="White"/>
             <Label Content="Plugboard (AB CD EF):" HorizontalAlignment="Left" Margin="361,15,0,0" VerticalAlignment="Top" Foreground="White"/>
             <TextBox x:Name="txtPlugboard" HorizontalAlignment="Left" Margin="501,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" TextChanged="txtPlugboard_TextChanged"/>
             <Button x:Name="btnSetPlugboard" Content="Enable" HorizontalAlignment="Left" Margin="711,20,0,0" VerticalAlignment="Top" Click="btnSetPlugboard_Click" Width="65"/>
-            <Label Content="MIRRORED" HorizontalAlignment="Left" Margin="111,66,0,0" VerticalAlignment="Top" FontSize="10" Foreground="#FFF9F5F5"/>
-            <Label Content="DEFAULT&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,66,0,0" VerticalAlignment="Top" FontSize="10" Foreground="#FFF9F5F5"/>
-            <Label Content="ENCRYPTED" HorizontalAlignment="Left" Margin="618,66,0,0" VerticalAlignment="Top" Height="27" Width="68" FontSize="10" Foreground="#FFF9F5F5"/>
-            <TextBox x:Name="lblEncrpyt" Text="Encrypt" HorizontalAlignment="Left" Margin="542,89,0,0" VerticalAlignment="Top" Foreground="White" Height="102" Width="220" BorderBrush="#FFF6DFDF" Background="{x:Null}" TextWrapping="Wrap" IsReadOnly="True" MaxLength="2147483647" FontSize="10"/>
+            <Label Content="MIRRORED" HorizontalAlignment="Left" Margin="111,103,0,0" VerticalAlignment="Top" FontSize="10" Foreground="#FFF9F5F5"/>
+            <Label Content="DEFAULT&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top" FontSize="10" Foreground="#FFF9F5F5"/>
+            <Label Content="ENCRYPTED" HorizontalAlignment="Left" Margin="618,103,0,0" VerticalAlignment="Top" Height="27" Width="68" FontSize="10" Foreground="#FFF9F5F5"/>
+            <TextBox x:Name="lblEncrpyt" Text="Encrypt" HorizontalAlignment="Left" Margin="542,126,0,0" VerticalAlignment="Top" Foreground="White" Height="102" Width="220" BorderBrush="#FFF6DFDF" Background="{x:Null}" TextWrapping="Wrap" IsReadOnly="True" MaxLength="2147483647" FontSize="10"/>
+            <Rectangle HorizontalAlignment="Left" Height="18" Margin="1,303,0,0" Stroke="Black" VerticalAlignment="Top" Width="54" Fill="#FF7C9CFF"/>
+            <TextBlock HorizontalAlignment="Left" Margin="63,304,0,0" TextWrapping="Wrap" Text="Default Text" VerticalAlignment="Top" Foreground="White"/>
+            <Rectangle HorizontalAlignment="Left" Height="18" Margin="1,332,0,0" Stroke="Black" VerticalAlignment="Top" Width="54" Fill="MediumVioletRed"/>
+            <TextBlock HorizontalAlignment="Left" Margin="63,333,0,0" TextWrapping="Wrap" Text="Encrypted Text" VerticalAlignment="Top" Foreground="White"/>
 
         </Grid>
-        <Rectangle Height="26" Stroke="Black" Width="890" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="0,357,0,0"/>
 
-        <Rectangle Height="26" Stroke="Black" Width="890" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="0,326,0,0"/>
-        <Rectangle Height="26" Stroke="Black" Width="890" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="0,418,0,0"/>
-        <Rectangle Height="26" Stroke="Black" Width="890" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="0,387,0,0"/>
-        <Label x:Name="lblControlRing" Canvas.Left="3" Foreground="White" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="837" FontSize="8" Margin="89,328,0,0"/>
-        <Label Foreground="White" Content="Control" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="-39" FontSize="8" Margin="39,327,0,0"/>
-        <Label Content="Ring 3 (H)" Canvas.Left="3" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="702" FontSize="8" Margin="39,421,0,0"/>
-        <Label Content="Ring 2 (M)" Canvas.Left="3" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="702" FontSize="8" Margin="39,390,0,0"/>
-        <Label Content="Ring 1 (S)" Canvas.Left="3" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="702" FontSize="8" Margin="39,359,0,0"/>
-        <Label x:Name="lblRing2" Canvas.Left="3" Foreground="White" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="838" FontSize="8" Margin="88,421,0,0"/>
-        <Label x:Name="lblRing3" Canvas.Left="3" Foreground="White" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="838" FontSize="8" Margin="88,390,0,0"/>
-        <Label x:Name="lblRing1" Canvas.Left="3" Foreground="White" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="837" FontSize="8" Margin="89,359,0,0"/>
-        <Rectangle Height="26" Stroke="Black" Width="890" HorizontalAlignment="Center" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="0,447,0,0"/>
-        <Label Content="Reflector" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="702" FontSize="8" Margin="39,450,0,0"/>
-        <Label x:Name="lblReflector" Foreground="White" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="838" FontSize="8" Margin="88,450,0,0"/>
+        <Rectangle Height="26" Stroke="Black" Width="102" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="758,276,0,0"/>
+        <Rectangle Height="26" Stroke="Black" Width="102" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="758,336,0,0"/>
+        <Rectangle Height="26" Stroke="Black" Width="102" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="758,306,0,0" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Label Content="Ring 3 (H)" Canvas.Left="3" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" FontSize="8" Margin="767,339,0,0"/>
+        <Label Content="Ring 2 (M)" Canvas.Left="3" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="48" FontSize="8" Margin="767,308,0,0"/>
+        <Label Content="Ring 1 (S)" Canvas.Left="3" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" FontSize="8" Margin="767,277,0,0"/>
+        <Label x:Name="lblRing1" Canvas.Left="3" Foreground="White" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="33" FontSize="8" Margin="816,341,0,0" Height="22"/>
+        <Rectangle Height="26" Stroke="Black" Width="102" HorizontalAlignment="Left" VerticalAlignment="Top" RadiusX="8" RadiusY="8" Fill="#FF17181A" Margin="758,366,0,0"/>
+        <Label Content="Reflector" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" FontSize="8" Margin="767,368,0,0"/>
+        <Label x:Name="lblReflector" Foreground="White" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="33" FontSize="8" Margin="816,368,0,0" Height="23"/>
+        <Label x:Name="lblRing2" Foreground="White" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="34" FontSize="8" Margin="815,309,0,0"/>
+        <Label x:Name="lblRing3" Foreground="White" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="34" FontSize="8" Margin="815,278,0,0"/>
 
 
     </Grid>

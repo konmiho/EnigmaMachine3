@@ -68,7 +68,6 @@ namespace EnigmaMachine2
             };
         }
 
-
         // Display rotor wiring in UI labels
         private void DisplayRing(Label displayLabel, string ring)
         {
@@ -99,7 +98,7 @@ namespace EnigmaMachine2
             // Check for uppercase letters and message length
             if (_plugboardSet && _rotor)
             {
-                if (e.Key.ToString().Length == 1 && lblInput.Text.ToString().Length < 128)
+                if (e.Key.ToString().Length == 1)
                 {
                     if ((int)e.Key.ToString()[0] >= 65 && (int)e.Key.ToString()[0] <= 90)
                     {
@@ -108,11 +107,11 @@ namespace EnigmaMachine2
                             lamps[x].Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFF2F2"));
                             if (e.Key.ToString() == textBoxArray[x].Text)
                             {
-                                lamps[x].Fill = new SolidColorBrush(Colors.BlueViolet);
+                                lamps[x].Fill = new SolidColorBrush(Colors.MediumVioletRed);
                             }
                             if (Encrypt(e.Key.ToString()[0]) == textBoxArray[x].Text[0])
                             {
-                                lamps[x].Fill = new SolidColorBrush(Colors.MediumVioletRed);
+                                lamps[x].Fill = new SolidColorBrush(Color.FromArgb(0xFF, 0x7C, 0x9C, 0xFF));
                             }
                         }
 
@@ -120,7 +119,6 @@ namespace EnigmaMachine2
                         lblEncrpyt.Text += Encrypt(e.Key.ToString()[0]) + ""; // Encrypt and append
                         lblEncrpytMirror.Text += Mirror(e.Key.ToString()[0]) + ""; // Mirror and append
 
-                        // Rotate rotors if enabled
                         if (_rotor)
                         {
                             Rotate(true);
@@ -137,7 +135,6 @@ namespace EnigmaMachine2
                     lblEncrpyt.Text += " ";
                     lblEncrpytMirror.Text += " ";
                 }
-                // Handle backspace key
                 else if (e.Key == Key.Back)
                 {
                     Rotate(false); // Rotate rotors backward
@@ -151,7 +148,6 @@ namespace EnigmaMachine2
                 }
             }
         }
-
         // Encrypt a character
         private char Encrypt(char letter)
         {
@@ -162,7 +158,6 @@ namespace EnigmaMachine2
                 newChar = _plugboard[newChar];
             else if (_plugboard.ContainsValue(newChar))
                 newChar = _plugboard.FirstOrDefault(x => x.Value == newChar).Key;
-
 
             // Rotor pass forward
             newChar = _ring1[IndexSearch(_control, newChar)];
@@ -214,7 +209,6 @@ namespace EnigmaMachine2
             lblEncrpyt.Text = "";
             lblEncrpytMirror.Text = "";
 
-            DisplayRing(lblControlRing, _control);
             DisplayRing(lblRing1, _ring1);
             DisplayRing(lblRing2, _ring2);
             DisplayRing(lblRing3, _ring3);
@@ -332,7 +326,6 @@ namespace EnigmaMachine2
                     }
                     else
                     {
-                        // Show a message box if the values are not within the valid range
                         MessageBox.Show("Please enter numbers between 0 and 25 for the rotor offsets.");
                     }
                 }
@@ -374,21 +367,6 @@ namespace EnigmaMachine2
             return newWord;
         }
 
-        // Handle text box focus
-        private void txtBRing1Init_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txtBRing1Init.Text = "";
-        }
-
-        private void txtBRing2Init_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txtBRing2Init.Text = "";
-        }
-
-        private void txtBRing3Init_GotFocus(object sender, RoutedEventArgs e)
-        {
-            txtBRing3Init.Text = "";
-        }
 
         // Display rotor offsets
         private void DisplayOffset()
@@ -418,7 +396,6 @@ namespace EnigmaMachine2
         {
             string plugboardInput = txtPlugboard.Text;
 
-
             if (String.IsNullOrWhiteSpace(plugboardInput) || ValidPB(plugboardInput) == true)
             {
                 SetupPlugboard(plugboardInput);
@@ -429,7 +406,6 @@ namespace EnigmaMachine2
 
                 if (_plugboardSet)
                     txtPlugboard.IsEnabled = false;
-
             }
             else
             {
@@ -438,7 +414,6 @@ namespace EnigmaMachine2
             }
           
         }
-
 
         private void txtPlugboard_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -462,26 +437,18 @@ namespace EnigmaMachine2
             string[] pairs = input.ToUpper().Split(' ');
 
             if (pairs.Length == 0)
-            {
                 return true;
-            }
             
             if (pairs.Length > 10)
-            {
                 return false;
-            }
 
             foreach (string pair in pairs)
             {
                 if (pair.Length != 2)
-                {
                     return false;
-                }
 
                 if (!pair.All(char.IsLetter))
-                {
                     return false;
-                }
             }
 
             List<char> usedLetters = new List<char>(); 
